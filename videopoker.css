@@ -1,0 +1,147 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    border: none;
+}
+
+button {
+    padding: 0; 
+    cursor: pointer;
+}
+
+button:focus {
+    outline:0;
+}
+
+/*=========================cards=========================*/
+
+.cardTable {
+    width: 100vw;
+    height: 40vh;
+    /* min-height: 220px; */
+    display: flex;
+    justify-content: center;
+    background-color: #118DC1;
+    /* border: 1px solid red */
+}
+
+.card {
+    width: 145px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    cursor: pointer;
+}
+
+.suit {
+    height: 80px;
+    /* position: absolute; */
+    top: 90px;
+    left: 65px;
+}
+
+.rank {
+    font-size: 2.5rem;
+    font-family: 'Lato', sans-serif;
+}
+
+.card_selected {
+    stroke: red;
+    stroke-width: 2;
+}
+
+
+svg, p, rect{
+    pointer-events: none
+}
+
+/*=========================paytable=========================*/
+.paytable {
+    background-color: #2DAFE3;
+    height: 50vh;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.paytable_table {
+    width: 70%;
+}
+
+
+table {
+    background-color: #118DC1;
+    padding: 10px;
+    /* margin: 20px auto; */
+    border-radius: 10px;
+    min-width: 810px;
+    max-width: 900px;
+    width: 80%;
+}
+
+.title_cell {
+    text-align: left;
+}
+
+td {
+    font-family: lato;
+    color: #094762;
+    text-align: right;
+}
+
+.cash {
+    width: 150px;
+    height: 35px;
+    background-color: #0C2833;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.cash_value {
+    color: #C3EAFA;
+    font-family: lato;
+    font-size: 1.2rem;
+}
+
+/*=========================controll=========================*/
+.controll {
+    height: 10vh;
+    background-color: #118DC1;
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    width: 130px;
+    height: 35px;
+    border-radius: 10px;
+    color: #094762;
+    font-family: lato;
+    font-size: 1.2rem;
+}
+
+.draw {
+    background-color: #FFAC17;
+    margin-left: 50px;
+}
+
+.bet_btn {
+    background-color: #6FB567;
+}
+
+.bet {
+    width: 400px;
+    height: 35px;
+    background-color: #0C2833;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
