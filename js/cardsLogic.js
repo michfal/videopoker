@@ -1,10 +1,10 @@
-class Logic {
+class CardsLogic {
     constructor(){
         this.round = 0;
         this.cardsData = [];
         this.valuesCount = {};
         this.currentHands = [];
-        
+        this.values = [];
     }
 
 
@@ -26,26 +26,27 @@ class Logic {
         cardsArray.forEach((e) => cardsNewValues.push(e.dataset))
 
         this.cardsData = cardsNewValues;
-        //console.log(this.cardsData)
+        console.log(this.cardsData)
     }
 
     arrangeCardsData() {
-        let values = []; //will store values of drawn cards
+        this.values = []; //will store values of drawn cards
         let hands = [];
         this.valuesCount = {}; //will store amount of each drawn card
 
         //arrange values and suits in arrays
-        this.cardsData.forEach((e) => values.push(e.value)); //pushes suits of drawn cards to "values" array
-
+        this.cardsData.forEach((e) => this.values.push(parseInt(e.value))); //pushes suits of drawn cards to "values" array
+        this.values.sort(function(a, b){return a-b}) 
+        console.log(this.values)
         //counts the amount of same cards values and puts them in Logic.valuesCount
-        values.forEach((e) => {
+        this.values.forEach((e) => {
             let count = 0;
-            values.forEach((value) => {
+            this.values.forEach((value) => {
                 if(value==e) {count++}
             })
             this.valuesCount[e] = count;    
         })
-       // console.log(this.valuesCount)
+        console.log(this.valuesCount)
     }
 
 
@@ -69,13 +70,30 @@ class Logic {
             this.currentHands.push("flusch")
         }
 
+        //check for straight
+
+        let straightCheck = [];
+        this.values.forEach((e, i) => {    
+            if(i > 0) {
+                if((this.values[i] - this.values[i-1] === 1)) {
+                    straightCheck.push("straight");
+                }
+            }        
+        })
+        if(straightCheck.length === 4) {
+            this.currentHands.push("straight")
+        }
+        if(straightCheck.length === 4 && this.values[0] === 10 && this.currentHands.includes("flusch")) {
+            this.currentHands.push("royalFlush")
+        }
         
     }
 
     winningHand() {
+        let winningHand;
         console.log(this.currentHands);
 
-        if(this.currentHands.length == 1 && this.currentHands[0] != "pair") console.log(this.currentHands[0]);
+        if(this.currentHands.length == 1 && this.currentHands[0] != "pair") winningHand = this.currentHands[0];
        
         if(this.currentHands.length > 1) { 
     
@@ -86,10 +104,14 @@ class Logic {
                 }
             });
   
-           if(this.currentHands.every((e) => e == "pair")) {console.log("twoPairs")};
-           if(this.currentHands.includes("pair") && this.currentHands.includes("threeOfAkind")) {console.log("fullHouse")}
+           if(this.currentHands.every((e) => e == "pair")) winningHand = "twoPairs";
+           if(this.currentHands.includes("pair") && this.currentHands.includes("threeOfAkind")) winningHand = "fullHouse"
+           if(this.currentHands.includes("straight") && this.currentHands.includes("flusch")) winningHand = "straightFlush"
+           if(this.currentHands.includes("royalFlush")) winningHand = "royalFlush"
             
         }
+        console.log(winningHand)
+        return winningHand
     }
 
 

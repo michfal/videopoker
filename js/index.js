@@ -7,18 +7,18 @@ const cardsDisplay = new CardsDisplay()
 const payTable = new PayTable()
 payTable.buildTable()
 
-const logic = new Logic();
-//logic.getCardData()
+const cardsLogic = new CardsLogic();
+//cardsLogic.getCardData()
 
-cardsDisplay.pickCardForContainer(logic.round)
+cardsDisplay.pickCardForContainer(cardsLogic.round)
 
 cardsDisplay.drawBtn.addEventListener('click', () => {
-    logic.roundCount();
-    cardsDisplay.pickCardForContainer(logic.round);
-    logic.getCardsData();
-    logic.arrangeCardsData();
-    logic.findBasicHands();
-    logic.winningHand();
+    cardsLogic.roundCount();
+    cardsDisplay.pickCardForContainer(cardsLogic.round);
+    cardsLogic.getCardsData();
+    cardsLogic.arrangeCardsData();
+    cardsLogic.findBasicHands();
+    cardsLogic.winningHand();
     });
 
 cardsDisplay.cardTable.addEventListener('click', (e) => {
