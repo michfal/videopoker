@@ -10,7 +10,9 @@ class CardsLogic {
 
     roundCount() {
         if(this.round < 2) {this.round++;}
-        else this.round = 0;
+        else {
+            this.round = 0;
+        }
         //console.log(this.round)
     }
 
@@ -26,7 +28,7 @@ class CardsLogic {
         cardsArray.forEach((e) => cardsNewValues.push(e.dataset))
 
         this.cardsData = cardsNewValues;
-        console.log(this.cardsData)
+        //console.log(this.cardsData)
     }
 
     arrangeCardsData() {
@@ -37,7 +39,7 @@ class CardsLogic {
         //arrange values and suits in arrays
         this.cardsData.forEach((e) => this.values.push(parseInt(e.value))); //pushes suits of drawn cards to "values" array
         this.values.sort(function(a, b){return a-b}) 
-        console.log(this.values)
+       // console.log(this.values)
         //counts the amount of same cards values and puts them in Logic.valuesCount
         this.values.forEach((e) => {
             let count = 0;
@@ -46,7 +48,7 @@ class CardsLogic {
             })
             this.valuesCount[e] = count;    
         })
-        console.log(this.valuesCount)
+        //console.log(this.valuesCount)
     }
 
 
@@ -91,7 +93,7 @@ class CardsLogic {
 
     winningHand() {
         let winningHand;
-        console.log(this.currentHands);
+       // console.log(this.currentHands);
 
         if(this.currentHands.length == 1 && this.currentHands[0] != "pair") winningHand = this.currentHands[0];
        
@@ -110,7 +112,7 @@ class CardsLogic {
            if(this.currentHands.includes("royalFlush")) winningHand = "royalFlush"
             
         }
-        console.log(winningHand)
+        //console.log(winningHand)
         return winningHand
     }
 

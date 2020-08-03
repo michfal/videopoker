@@ -10,6 +10,8 @@ payTable.buildTable()
 const cardsLogic = new CardsLogic();
 //cardsLogic.getCardData()
 
+const accountLogic = new AccountLogic()
+
 cardsDisplay.pickCardForContainer(cardsLogic.round)
 
 cardsDisplay.drawBtn.addEventListener('click', () => {
@@ -21,21 +23,9 @@ cardsDisplay.drawBtn.addEventListener('click', () => {
     cardsLogic.winningHand();
     });
 
-cardsDisplay.cardTable.addEventListener('click', (e) => {
-    // if(logic.round != 0) {
-    //     let target = e.target;
-    //     if(target.classList.contains("card")){
-    //         target.classList.toggle("card_selected")
-    //     }
-    // }
+cardsDisplay.cardTable.addEventListener('click', cardsDisplay.selectCard);
 
-    //====for test purpose========
-    let target = e.target;
-    if(target.classList.contains("card")){
-        target.classList.toggle("card_selected")
-    }
-
+accountLogic.setBet.addEventListener('click', (e) => {
+    accountLogic.bet(e, payTable.basicBet)
 })
-
-
 

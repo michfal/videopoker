@@ -13,7 +13,25 @@ class CardsDisplay {
         }    
         this.cardsContainers = document.getElementsByClassName("card");
     }
+
+    // drawCards(){
+    //     if(cardsLogic.round != 0) {
+    //         let target = e.target;
+    //         if(target.classList.contains("card")){
+    //             target.classList.toggle("card_selected")
+    //         }
+    //     }
+    // }
     
+    selectCard(e){
+        if(cardsLogic.round != 0) {
+            let target = e.target;
+            if(target.classList.contains("card")){
+                target.classList.toggle("card_selected")
+            }
+        }
+    }
+
     generateRandomIndexes() {
         let randomIndexes = []
         while(randomIndexes.length < 5){
@@ -24,6 +42,10 @@ class CardsDisplay {
     }
 
     pickCardForContainer(round) {
+
+        if(round === 0) {
+            [...cardsDisplay.cardsContainers].forEach((container) => container.classList.remove("card_selected"))
+        }
         
         this.randomIndexes = this.generateRandomIndexes();
         [...cardsDisplay.cardsContainers].map((container, i) => {
@@ -42,7 +64,7 @@ class CardsDisplay {
         const value = cardObject.value;
         let content = '';
 
-        if(round == 0) {
+        if(round === 0) {
             content = `<svg width="150" height="185" viewBox="0 0 150 185">
             <rect x="3" y="3" rx="20" ry="20" width="145" height="180" style="fill: white;"/>
                 <rect x="3" y="3" rx="15" ry="15" width="125" height="160" transform="translate(10, 10)" style="fill: #6FB567;"/>
