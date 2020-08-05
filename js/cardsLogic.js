@@ -16,9 +16,9 @@ class CardsLogic {
         //console.log(this.round)
     }
 
-    getRound = () => {
-        return this.round;
-    }
+    // getRound = () => {
+    //     return this.round;
+    // }
 
     //gets data of drawn cards
     getCardsData() {
@@ -33,7 +33,7 @@ class CardsLogic {
 
     arrangeCardsData() {
         this.values = []; //will store values of drawn cards
-        let hands = [];
+
         this.valuesCount = {}; //will store amount of each drawn card
 
         //arrange values and suits in arrays

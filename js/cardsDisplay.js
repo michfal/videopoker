@@ -14,15 +14,7 @@ class CardsDisplay {
         this.cardsContainers = document.getElementsByClassName("card");
     }
 
-    // drawCards(){
-    //     if(cardsLogic.round != 0) {
-    //         let target = e.target;
-    //         if(target.classList.contains("card")){
-    //             target.classList.toggle("card_selected")
-    //         }
-    //     }
-    // }
-    
+   
     selectCard(e){
         if(cardsLogic.round != 0) {
             let target = e.target;
@@ -76,12 +68,6 @@ class CardsDisplay {
             <text x="15" y="50" class="rank" style="stroke: none">${rank}<text>
             </svg>`
         }
-    
-        // content = `<svg width="150" height="185" viewBox="0 0 150 185">
-        //      <rect x="3" y="3" rx="20" ry="20" width="145" height="180" style="fill: white;"/>
-        //      ${cardsDisplay.cardsSuitsSVG[suit]}
-        //      <text x="15" y="50" class="rank" style="stroke: none">${rank}<text>
-        //      </svg>`
         
         container.innerHTML = content;
         container.dataset.suit = suit;
@@ -90,7 +76,4 @@ class CardsDisplay {
     }
 }
 
-
-// const deckArray = new Deck();
-// deckArray.createDeck();
 
