@@ -8,19 +8,19 @@ class CardsLogic {
     }
 
 
-    roundCount() {
+    roundCount() {    
         if(this.round < 2) {this.round++;}
         else {
             this.round = 0;
         }
-        //console.log(this.round)
+        console.log()
     }
 
-    // getRound = () => {
-    //     return this.round;
-    // }
+    roundReset() {
+        this.round = 0
+    }
 
-    //gets data of drawn cards
+
     getCardsData() {
         const cards = document.getElementsByClassName("card");
         const cardsArray = [...cards];
@@ -69,7 +69,7 @@ class CardsLogic {
         this.cardsData.forEach((e) => suits.push(e.suit));
 
         if(suits.every((e) => e==suits[0])) {
-            this.currentHands.push("flusch")
+            this.currentHands.push("flush")
         }
 
         //check for straight
@@ -85,15 +85,15 @@ class CardsLogic {
         if(straightCheck.length === 4) {
             this.currentHands.push("straight")
         }
-        if(straightCheck.length === 4 && this.values[0] === 10 && this.currentHands.includes("flusch")) {
+        if(straightCheck.length === 4 && this.values[0] === 10 && this.currentHands.includes("flush")) {
             this.currentHands.push("royalFlush")
         }
-        
+        // console.log(this.currentHands)
     }
 
     winningHand() {
         let winningHand;
-       // console.log(this.currentHands);
+        // console.log(this.currentHands);
 
         if(this.currentHands.length == 1 && this.currentHands[0] != "pair") winningHand = this.currentHands[0];
        
@@ -107,12 +107,13 @@ class CardsLogic {
             });
   
            if(this.currentHands.every((e) => e == "pair")) winningHand = "twoPairs";
-           if(this.currentHands.includes("pair") && this.currentHands.includes("threeOfAkind")) winningHand = "fullHouse"
-           if(this.currentHands.includes("straight") && this.currentHands.includes("flusch")) winningHand = "straightFlush"
-           if(this.currentHands.includes("royalFlush")) winningHand = "royalFlush"
+           if(this.currentHands.includes("pair") && this.currentHands.includes("threeOfAkind")) winningHand = "fullHouse";
+           if(this.currentHands.includes("straight") && this.currentHands.includes("flush")) winningHand = "straightFlush";
+           if(this.currentHands.includes("royalFlush")) winningHand = "royalFlush";
+           if(this.currentHands.includes("fourOfAkind")) winningHand = "fourOfAkind";
             
         }
-        //console.log(winningHand)
+        // console.log(winningHand)
         return winningHand
     }
 

@@ -16,6 +16,11 @@ class CardsDisplay {
 
    
     selectCard(e){
+        // let target = e.target;
+        // if(target.classList.contains("card")){
+        //     target.classList.toggle("card_selected")
+        // }
+
         if(cardsLogic.round != 0) {
             let target = e.target;
             if(target.classList.contains("card")){
@@ -39,7 +44,14 @@ class CardsDisplay {
             [...cardsDisplay.cardsContainers].forEach((container) => container.classList.remove("card_selected"))
         }
         
+        
+        //=====test purpose=================
+        // this.randomIndexes = [8, 9, 10, 11, 12];
+        // console.log(deckArray);
+        //==================================
+
         this.randomIndexes = this.generateRandomIndexes();
+
         [...cardsDisplay.cardsContainers].map((container, i) => {
             if(!container.classList.contains("card_selected")){ 
                 let randomCardIndex = this.randomIndexes[i]
@@ -50,7 +62,7 @@ class CardsDisplay {
     }
     
     createCardSVG(cardObject, container, round) {
-        
+
         const suit = cardObject.suit;
         const rank = cardObject.rank;
         const value = cardObject.value;
@@ -68,6 +80,14 @@ class CardsDisplay {
             <text x="15" y="50" class="rank" style="stroke: none">${rank}<text>
             </svg>`
         }
+
+        // content = `<svg width="150" height="185" viewBox="0 0 150 185">
+        // <rect x="3" y="3" rx="20" ry="20" width="145" height="180" style="fill: white;"/>
+        // ${cardsDisplay.cardsSuitsSVG[suit]}
+        // <text x="15" y="50" class="rank" style="stroke: none">${rank}<text>
+        // </svg>`
+
+
         
         container.innerHTML = content;
         container.dataset.suit = suit;
