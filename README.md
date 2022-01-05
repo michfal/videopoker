@@ -1,5 +1,5 @@
 # videopoker
-<p>Simple videopoker (slotlike) game<p>
+<p>Simple videopoker (slotlike) game that displays graphics using DOM and SVG<p>
 <h2>Built With</h2>
 <ul>
   <li>Html</li>
